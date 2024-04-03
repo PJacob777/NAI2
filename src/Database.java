@@ -3,10 +3,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Database {
-    public Database(String path,double con) {
-        int n =  numberOfDigitsInVector(path);
-        Perceptron p = new Perceptron(n,con);
-        p.learnPerceptron(path);
+    public Database(String trainPath, String testPath,double con) {
+        int n =  numberOfDigitsInVector(trainPath);
+        System.out.println(n);
+        Perceptron p = new Perceptron(n,con,trainPath,testPath);
+        p.learnPerceptron();
     }
     private int numberOfDigitsInVector(String path){
         int number=0;
