@@ -75,3 +75,51 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.iws.xml
+*.ipr
+*.iws
+.idea_modules/
+out/
+target/
+
+# Compiled Files
+*.class
+
+# Logs and databases
+*.log
+*.sqlite
+*.sql
+*.hprof
+
+# User-specific files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+.idea/jsTemplates.xml
+
+# Various settings
+.idea/codeStyles
+.idea/codeInspection
+.idea/shelf
+.idea/inspectionProfiles
+.idea/runConfigurations
+.idea/copyright
+.idea/uiDesigner
+.idea/encodings.xml
+.idea/modules.xml
+.idea/workspace.xml
+.idea/.name
+.idea/compiler.xml
+.idea/misc.xml
+.idea/vcs.xml
+
+# Exclude folders
+.idea/
+.gradle/
+build/
