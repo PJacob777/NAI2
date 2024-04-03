@@ -35,6 +35,7 @@ public class Perceptron {
                 }
                 if(!split[split.length-1].equals(getNameOfFlower(res)))
                     correctPerceptron(getNameOfFlower(res));
+                System.out.println(threshold);
             }
 
         }catch (IOException e){
@@ -66,5 +67,8 @@ public class Perceptron {
         for (int i=0;i<weight.getParams().length;i++)
             weight.getParams()[i]-=weight.getParams()[i]*con;
         changeThreshold(con);
+    }
+
+    public void testPerceptron() {
     }
 }
