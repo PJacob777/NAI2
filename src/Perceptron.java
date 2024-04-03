@@ -22,9 +22,34 @@ public class Perceptron {
     }
     public void learnPerceptron(){
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(trainPath))){
+            String line;
+            while ((line=bufferedReader.readLine())!=null){
+                String[] split = line.split(",");
+                double[] digits = new double[weight.getParams().length];
+                for (int i=0; i< digits.length;i++){
+                    digits[i]=Double.parseDouble(split[i]);
+                }
+                double res =0;
+                for(int i =0 ; i < weight.getParams().length;i++){
+                    res+=digits[i]*weight.getParams()[i];
+                }
+                if(!split[split.length-1].equals(getNameOfFlower(res)))
+                    correctPerceptron();
+            }
 
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    private void correctPerceptron() {
+
+    }
+
+    private String getNameOfFlower(double result){
+        return result>threshold?"Iris-setosa":"Iris-versicolor";
+    }
+    private void changeThreshold(double x){
+        threshold-=x;
     }
 }

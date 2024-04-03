@@ -3,9 +3,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Database {
+    private final int numberOfDigitsInVector;
     public Database(String trainPath, String testPath,double con) {
         int n =  numberOfDigitsInVector(trainPath);
-        System.out.println(n);
+        numberOfDigitsInVector=n;
         Perceptron p = new Perceptron(n,con,trainPath,testPath);
         p.learnPerceptron();
     }
@@ -26,5 +27,9 @@ public class Database {
         }
 
         return number;
+    }
+
+    public int getNumberOfDigitsInVector() {
+        return numberOfDigitsInVector;
     }
 }
