@@ -33,7 +33,8 @@ public class Perceptron {
                 for(int i =0 ; i < weight.getParams().length;i++){
                     res+=digits[i]*weight.getParams()[i];
                 }
-                if(!split[split.length-1].equals(getNameOfFlower(res)))
+                String name = getNameOfFlower(res);
+                if(!split[split.length-1].equals(name))
                     correctPerceptron(getNameOfFlower(res),digits);
                 //System.out.println(weight);
             }
@@ -48,8 +49,8 @@ public class Perceptron {
             increaseVec(doubles);
         else
             decreaseVec(doubles);
-//        System.out.println(weight);
-//        System.out.println(threshold);
+        System.out.println(weight);
+        System.out.println(threshold);
     }
 
     private String getNameOfFlower(double result){
@@ -59,18 +60,22 @@ public class Perceptron {
         threshold-=x;
     }
     private void increaseVec(double[] doubles){
-        for (int i=0;i<weight.getParams().length;i++)
-            weight.getParams()[i]+=weight.getParams()[i]*con*doubles[i];
+        double[] tmp = weight.getParams();
+        for (int i=0;i<tmp.length;i++)
+            tmp[i]+=tmp[i]*con*doubles[i];
+        weight.setParams(tmp);
         changeThreshold(-con);
 
     }
     private void decreaseVec(double[] doubles){
-        for (int i=0;i<weight.getParams().length;i++)
-            weight.getParams()[i]-=weight.getParams()[i]*con*doubles[i];
+        double[] tmp = weight.getParams();;
+        for (int i=0;i<tmp.length;i++)
+            tmp[i]-=tmp[i]*con*doubles[i];
+        weight.setParams(tmp);
         changeThreshold(con);
     }
 
-    public void testPerceptron() {
+    public double testPerceptron() {
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(testPath))){
             String line;
             int counter=0;
@@ -85,11 +90,11 @@ public class Perceptron {
                     correct++;
                 counter++;
             }
-            double result = (double) correct /counter;
-            System.out.println(result);
+            return (double) correct /counter;
 
         }catch (IOException x){
             x.printStackTrace();
         }
+        return 0;
     }
 }
