@@ -49,8 +49,8 @@ public class Perceptron {
             decreaseVec(doubles);
         else
             increaseVec(doubles);
-        System.out.println(weight);
-        System.out.println(threshold);
+//        System.out.println(weight);
+//        System.out.println(threshold);
     }
 
     private String getNameOfFlower(double result){
@@ -62,15 +62,15 @@ public class Perceptron {
     private void increaseVec(double[] doubles){
         double[] tmp = weight.getParams();
         for (int i=0;i<tmp.length;i++)
-            tmp[i]+=tmp[i]*con*doubles[i];
+            tmp[i]=tmp[i] + con*doubles[i];
         weight.setParams(tmp);
         changeThreshold(-con);
 
     }
     private void decreaseVec(double[] doubles){
-        double[] tmp = weight.getParams();;
+        double[] tmp = weight.getParams();
         for (int i=0;i<tmp.length;i++)
-            tmp[i]-=tmp[i]*con*doubles[i];
+            tmp[i]=tmp[i] - con*doubles[i];
         weight.setParams(tmp);
         changeThreshold(con);
     }
@@ -97,5 +97,6 @@ public class Perceptron {
             x.printStackTrace();
         }
         return 0;
+
     }
 }
