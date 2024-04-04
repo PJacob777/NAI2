@@ -35,7 +35,7 @@ public class Database {
         return numberOfDigitsInVector;
     }
     public void testPerceptron(){
-        System.out.println(perceptron.testPerceptron());
+        System.out.println("Statystyka dla wszystkich " + perceptron.testPerceptron());
     }
     public void giveNameOfFlower(double[] doubles){
         System.out.println(perceptron.giveResultOfWorking(doubles));

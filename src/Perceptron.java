@@ -80,6 +80,10 @@ public class Perceptron {
             String line;
             int counter=0;
             int correct =0;
+            int correctIrisS = 0;
+            int correctIrisV=0;
+            int counterIrisS=0;
+            int counterIrisV=0;
             while ((line=bufferedReader.readLine())!=null){
                 String[] split = line.split(",");
                 double res =0;
@@ -87,10 +91,21 @@ public class Perceptron {
                     res+=Double.parseDouble(split[i])*weight.getParams()[i];
                 }
                 String string = getNameOfFlower(res);
-                if(split[split.length-1].equals(string))
+                if (split[split.length-1].equals("Iris-setosa"))
+                    counterIrisS++;
+                if (split[split.length-1].equals("Iris-versicolor"))
+                    counterIrisV++;
+                if(split[split.length-1].equals(string)) {
                     correct++;
+                    if(string.equals("Iris-setosa"))
+                        correctIrisS++;
+                    if(string.equals("Iris-versicolor"))
+                        correctIrisV++;
+                }
                 counter++;
             }
+            System.out.println("statystyka dla Setosa : " + (double) correctIrisS/counterIrisS);
+            System.out.println("statystyka dla versicolor : "+ (double)correctIrisV/counterIrisV);
             return (double) correct /counter;
 
         }catch (IOException x){
