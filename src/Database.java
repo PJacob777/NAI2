@@ -9,6 +9,7 @@ public class Database {
         numberOfDigitsInVector=n;
         Perceptron p = new Perceptron(n,con,trainPath,testPath);
         p.learnPerceptron();
+        p.learnPerceptron();
         System.out.println(p.testPerceptron());
     }
     private int numberOfDigitsInVector(String path){

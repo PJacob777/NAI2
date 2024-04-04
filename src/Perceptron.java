@@ -46,9 +46,9 @@ public class Perceptron {
 
     private void correctPerceptron(String name,double[] doubles) {
         if (name.equals("Iris-setosa"))
-            increaseVec(doubles);
-        else
             decreaseVec(doubles);
+        else
+            increaseVec(doubles);
         System.out.println(weight);
         System.out.println(threshold);
     }
@@ -86,7 +86,8 @@ public class Perceptron {
                 for (int i =0 ; i<weight.getParams().length;i++){
                     res+=Double.parseDouble(split[i])*weight.getParams()[i];
                 }
-                if(split[split.length-1].equals(getNameOfFlower(res)))
+                String string = getNameOfFlower(res);
+                if(split[split.length-1].equals(string))
                     correct++;
                 counter++;
             }
