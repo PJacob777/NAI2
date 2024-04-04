@@ -9,14 +9,6 @@ public class Database {
         numberOfDigitsInVector=n;
         Perceptron p = new Perceptron(n,con,trainPath,testPath);
         p.learnPerceptron();
-        p.testPerceptron();
-        p.learnPerceptron();
-        p.learnPerceptron();
-        p.learnPerceptron();
-        p.learnPerceptron();
-        p.learnPerceptron();
-        p.learnPerceptron();
-        p.learnPerceptron();
         p.learnPerceptron();
         p.learnPerceptron();
         p.testPerceptron();

@@ -34,7 +34,7 @@ public class Perceptron {
                     res+=digits[i]*weight.getParams()[i];
                 }
                 if(!split[split.length-1].equals(getNameOfFlower(res)))
-                    correctPerceptron(getNameOfFlower(res));
+                    correctPerceptron(getNameOfFlower(res),digits);
                 //System.out.println(weight);
             }
 
@@ -43,13 +43,13 @@ public class Perceptron {
         }
     }
 
-    private void correctPerceptron(String name) {
+    private void correctPerceptron(String name,double[] doubles) {
         if (name.equals("Iris-setosa"))
-            decreaseVec();
+            increaseVec(doubles);
         else
-            increaseVec();
-
-
+            decreaseVec(doubles);
+//        System.out.println(weight);
+//        System.out.println(threshold);
     }
 
     private String getNameOfFlower(double result){
@@ -58,15 +58,15 @@ public class Perceptron {
     private void changeThreshold(double x){
         threshold-=x;
     }
-    private void increaseVec(){
+    private void increaseVec(double[] doubles){
         for (int i=0;i<weight.getParams().length;i++)
-            weight.getParams()[i]+=weight.getParams()[i]*con;
+            weight.getParams()[i]+=weight.getParams()[i]*con*doubles[i];
         changeThreshold(-con);
 
     }
-    private void decreaseVec(){
+    private void decreaseVec(double[] doubles){
         for (int i=0;i<weight.getParams().length;i++)
-            weight.getParams()[i]-=weight.getParams()[i]*con;
+            weight.getParams()[i]-=weight.getParams()[i]*con*doubles[i];
         changeThreshold(con);
     }
 
