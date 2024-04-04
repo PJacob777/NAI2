@@ -99,4 +99,11 @@ public class Perceptron {
         return 0;
 
     }
+    public String giveResultOfWorking(double[] doubles){
+        double res = 0;
+        for (int i = 0 ; i < weight.getParams().length;i++){
+            res+=weight.getParams()[i]*doubles[i];
+        }
+        return getNameOfFlower(res);
+    }
 }

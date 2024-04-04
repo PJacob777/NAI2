@@ -4,12 +4,13 @@ import java.io.IOException;
 
 public class Database {
     private final int numberOfDigitsInVector;
+    private final Perceptron perceptron;
     public Database(String trainPath, String testPath,double con) {
         int n =  numberOfDigitsInVector(trainPath);
         numberOfDigitsInVector=n;
         Perceptron p = new Perceptron(n,con,trainPath,testPath);
+        perceptron = p;
         p.learnPerceptron();
-        System.out.println(p.testPerceptron());
     }
     private int numberOfDigitsInVector(String path){
         int number=0;
@@ -32,5 +33,11 @@ public class Database {
 
     public int getNumberOfDigitsInVector() {
         return numberOfDigitsInVector;
+    }
+    public void testPerceptron(){
+        System.out.println(perceptron.testPerceptron());
+    }
+    public void giveNameOfFlower(double[] doubles){
+        System.out.println(perceptron.giveResultOfWorking(doubles));
     }
 }
