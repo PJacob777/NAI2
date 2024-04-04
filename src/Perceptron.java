@@ -35,7 +35,7 @@ public class Perceptron {
                 }
                 if(!split[split.length-1].equals(getNameOfFlower(res)))
                     correctPerceptron(getNameOfFlower(res));
-                System.out.println(threshold);
+                //System.out.println(weight);
             }
 
         }catch (IOException e){
@@ -45,9 +45,10 @@ public class Perceptron {
 
     private void correctPerceptron(String name) {
         if (name.equals("Iris-setosa"))
-            increaseVec();
-        else
             decreaseVec();
+        else
+            increaseVec();
+
 
     }
 
@@ -70,5 +71,25 @@ public class Perceptron {
     }
 
     public void testPerceptron() {
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(testPath))){
+            String line;
+            int counter=0;
+            int correct =0;
+            while ((line=bufferedReader.readLine())!=null){
+                String[] split = line.split(",");
+                double res =0;
+                for (int i =0 ; i<weight.getParams().length;i++){
+                    res+=Double.parseDouble(split[i])*weight.getParams()[i];
+                }
+                if(split[split.length-1].equals(getNameOfFlower(res)))
+                    correct++;
+                counter++;
+            }
+            double result = (double) correct /counter;
+            System.out.println(result);
+
+        }catch (IOException x){
+            x.printStackTrace();
+        }
     }
 }
